@@ -1,0 +1,55 @@
+﻿@page "/"
+@using Blazor_teste.Models
+@using Blazor_teste.Services
+@inject SellerService SellerService
+
+<Syncfusion.Blazor.Grids.SfGrid DataSource="@seller"                                    
+                                    AllowPaging="true" 
+                                    AllowSorting="true"
+                                    AllowFiltering="true"
+                                    AllowGrouping="true">
+    <GridPageSettings PageSize="3"/>
+    <GridColumns>
+        <GridColumn Field="@nameof(Seller.Id)"
+                    HeaderText="Departammento Id"
+                    TextAlign="TextAlign.Right"
+                    Width="120">
+        </GridColumn>
+        <GridColumn Field="@nameof(Seller.Name)"
+                    HeaderText="Departammento Id"
+                    TextAlign="TextAlign.Right"
+                    Width="120">
+        </GridColumn>
+        <GridColumn Field="@nameof(Seller.Sales)"
+                    HeaderText="Departammento Id"
+                    TextAlign="TextAlign.Right"
+                    Width="120">
+        </GridColumn>
+        <GridColumn Field="@nameof(Seller.BaseSalary)"
+                    HeaderText="Departammento Id"
+                    TextAlign="TextAlign.Right"
+                    Width="120">
+        </GridColumn>
+        <GridColumn Field="@nameof(Seller.BirthDate)"
+                    HeaderText="Departammento Id"
+                    TextAlign="TextAlign.Right"
+                    Width="120">        
+        </GridColumn>
+        <GridColumn Field="@nameof(Seller.Email)"
+                    HeaderText="Departammento Id"
+                    TextAlign="TextAlign.Right"
+                    Width="120">
+        </GridColumn>
+    </GridColumns>
+</Syncfusion.Blazor.Grids.SfGrid>
+
+
+@code
+    {
+    List<Seller> seller;
+
+    protected override async Task OnInitializedAsync()
+    {
+        seller = await Task.Run(() => SellerService.FindAllAsync());
+    }
+}

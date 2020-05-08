@@ -1,0 +1,39 @@
+﻿@page "/Departments"
+@using Blazor_teste.Models
+@using Blazor_teste.Services
+@inject DepartmentService DepartmentService
+
+    <Syncfusion.Blazor.Grids.SfGrid DataSource="@department" 
+                                    AllowPaging="true" 
+                                    AllowSorting="true"
+                                    AllowFiltering="true"
+                                    AllowGrouping="true">
+        <GridPageSettings PageSize="2"/>
+        <GridColumns>
+            <GridColumn Field="@nameof(Department.Id)"
+                        HeaderText="Departammento Id"
+                        TextAlign="TextAlign.Right"
+                        Width="120">
+            </GridColumn>
+            <GridColumn Field="@nameof(Department.Name)"
+                        HeaderText="Departammento Nome"
+                        TextAlign="TextAlign.Right"
+                        Width="120">
+            </GridColumn>
+            <GridColumn Field="@nameof(Department.Sellers)"
+                        HeaderText="Departammento Nome"
+                        TextAlign="TextAlign.Right"
+                        Width="120">
+            </GridColumn>
+        </GridColumns>
+    </Syncfusion.Blazor.Grids.SfGrid>
+
+@code
+    {
+    List<Department> department;
+
+    protected override async Task OnInitializedAsync()
+    {
+        department = await Task.Run(() => DepartmentService.FindAllAsync());
+    }
+}
