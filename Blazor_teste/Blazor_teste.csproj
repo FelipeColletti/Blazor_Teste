@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Pages\Counter.razor" />
+    <None Include="Pages\Calendar.razor" />
     <None Include="Pages\Error.razor" />
     <None Include="Pages\Index.razor" />
     <None Include="Pages\_Host.cshtml" />

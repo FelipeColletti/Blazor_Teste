@@ -1,0 +1,25 @@
+﻿@page "/Charts"
+@using Blazor_teste.Models
+@using Blazor_teste.Services
+@inject DepartmentService DepartmentService
+
+<Syncfusion.Blazor.Charts.SfChart>
+    <ChartSeriesCollection>
+        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+
+        </ChartPrimaryXAxis>
+        <ChartSeries Type="ChartSeriesType.Column" DataSource="@department"
+                     XName="Name" YName="Id">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</Syncfusion.Blazor.Charts.SfChart>
+
+@code
+    {
+    List<Department> department;
+
+    protected override async Task OnInitializedAsync()
+    {
+        department = await Task.Run(() => DepartmentService.FindAllAsync());
+    }
+}
